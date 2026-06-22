@@ -1,0 +1,1290 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>La nostra esperienza di stage · NTT Data Milano 2026</title>
+<meta name="description" content="Sette ragazzi raccontano due settimane di stage presso NTT Data Milano: formazione e affiancamento, lavoro di gruppo e le competenze acquisite." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800;900&family=Inter:wght@400;500;600&family=Playfair+Display:ital@1&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --white: #ffffff;
+    --cream: #f7f4f0;
+    --warm: #6b5c4d;        /* marrone/grigio caldo */
+    --warm-dark: #6c5d50;
+    --warm-light: #c9bcae;
+    --ink: #2b2724;         /* grigio scuro / nero */
+    --ink-soft: #5a534d;
+    --line: rgba(43, 39, 36, 0.10);
+    --radius: 18px;
+    --maxw: 1180px;
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    color: var(--ink);
+    background: var(--white);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  h1, h2, h3, .eyebrow { font-family: 'Poppins', sans-serif; }
+  .serif { font-family: 'Playfair Display', serif; font-style: italic; }
+  a { color: inherit; text-decoration: none; }
+  img { display: block; max-width: 100%; }
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 28px; }
+
+  .eyebrow {
+    display: inline-block;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--warm);
+    margin-bottom: 18px;
+  }
+  .section-title {
+    font-size: clamp(1.9rem, 4vw, 3rem);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 22px;
+  }
+  .lead { font-size: 1.12rem; color: var(--ink-soft); max-width: 60ch; }
+
+  /* ---------- decorative triangles ---------- */
+  .tri { position: absolute; width: 0; height: 0; pointer-events: none; z-index: 0; }
+
+  /* ---------- NAV ---------- */
+  header.nav {
+    position: fixed; inset: 0 0 auto 0; z-index: 100;
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0);
+    border-bottom: 1px solid transparent;
+    transition: background .35s var(--ease), border-color .35s var(--ease);
+  }
+  header.nav.scrolled { background: rgba(255, 255, 255, 0.92); border-bottom: 1px solid var(--line); }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 76px; }
+  .brand { display: flex; align-items: center; gap: 12px; font-family: 'Poppins'; font-weight: 800; letter-spacing: -0.01em; color: #fff; transition: color .35s var(--ease); }
+  .brand .mark { width: 34px; height: 34px; border-radius: 9px; background: rgba(255,255,255,0.16); border: 1px solid rgba(255,255,255,0.35); color: var(--white); display: grid; place-items: center; font-size: 0.95rem; font-weight: 900; transition: background .35s var(--ease), border-color .35s var(--ease), color .35s var(--ease); }
+  .brand small { display: block; font-family: 'Inter'; font-weight: 500; font-size: 0.7rem; color: var(--warm-light); letter-spacing: 0.12em; text-transform: uppercase; transition: color .35s var(--ease); }
+  nav.links { display: flex; gap: 32px; }
+  nav.links a { font-weight: 500; font-size: 0.92rem; color: rgba(255,255,255,0.82); position: relative; transition: color .2s; }
+  nav.links a::after { content:''; position:absolute; left:0; bottom:-6px; width:0; height:2px; background: var(--warm-light); transition: width .3s var(--ease); }
+  nav.links a:hover { color: #fff; }
+  nav.links a:hover::after { width: 100%; }
+  .nav-cta { background: #fff; color: var(--ink); padding: 11px 22px; border-radius: 999px; font-family:'Poppins'; font-weight: 600; font-size: 0.88rem; transition: transform .2s var(--ease), background .2s, color .2s; }
+  .nav-cta:hover { transform: translateY(-2px); background: var(--warm-light); color: var(--ink); }
+  .menu-toggle { display: none; }
+
+  /* scrolled state: barra bianca -> testo scuro */
+  header.nav.scrolled .brand { color: var(--ink); }
+  header.nav.scrolled .brand .mark { background: var(--ink); border-color: var(--ink); color: var(--white); }
+  header.nav.scrolled .brand small { color: var(--warm); }
+  header.nav.scrolled nav.links a { color: var(--ink-soft); }
+  header.nav.scrolled nav.links a::after { background: var(--warm); }
+  header.nav.scrolled nav.links a:hover { color: var(--ink); }
+  header.nav.scrolled .nav-cta { background: var(--ink); color: var(--white); }
+  header.nav.scrolled .nav-cta:hover { background: var(--warm-dark); color: var(--white); }
+
+  /* ---------- HERO ---------- */
+  .hero { position: relative; min-height: 60vh; display: flex; align-items: center; overflow: hidden; }
+  .hero-bg { position: absolute; inset: 0; z-index: 0; }
+  .hero-bg img { width: 100%; height: 100%; object-fit: cover; }
+  .hero-bg::after { content:''; position: absolute; inset: 0; background: linear-gradient(105deg, rgba(43,39,36,0.92) 0%, rgba(43,39,36,0.72) 42%, rgba(108,93,80,0.35) 100%); }
+  .hero-inner { position: relative; z-index: 2; color: var(--white); padding: 130px 0 80px; }
+  .hero-inner .eyebrow { color: var(--warm-light); }
+  .hero h1 { font-size: clamp(2.4rem, 6vw, 4.6rem); font-weight: 900; line-height: 1.04; letter-spacing: -0.03em; max-width: 16ch; margin-bottom: 8px; }
+  .hero .serif { display: block; font-size: clamp(1.3rem, 3vw, 2rem); color: var(--warm-light); font-weight: 400; margin: 18px 0 26px; letter-spacing: 0; }
+  .hero p.desc { font-size: 1.15rem; max-width: 56ch; color: rgba(255,255,255,0.82); margin-bottom: 36px; }
+  .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn { display: inline-flex; align-items: center; gap: 10px; font-family:'Poppins'; font-weight: 600; font-size: 0.96rem; padding: 15px 30px; border-radius: 999px; cursor: pointer; border: none; transition: transform .2s var(--ease), background .25s, box-shadow .25s; }
+  .btn-primary { background: var(--white); color: var(--ink); }
+  .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 18px 40px rgba(0,0,0,0.28); }
+  .btn-ghost { background: transparent; color: var(--white); border: 1.5px solid rgba(255,255,255,0.45); }
+  .btn-ghost:hover { background: rgba(255,255,255,0.12); transform: translateY(-3px); }
+  .btn, .menu-toggle, .flow-card, .gtile { touch-action: manipulation; }
+  .hero-stats { display: flex; gap: 46px; margin-top: 56px; flex-wrap: wrap; }
+  .hero-stats .stat strong { display: block; font-family:'Poppins'; font-weight: 800; font-size: 2.1rem; letter-spacing: -0.02em; }
+  .hero-stats .stat span { font-size: 0.85rem; color: rgba(255,255,255,0.7); letter-spacing: 0.04em; }
+
+  /* ---------- generic section ---------- */
+  section.block { position: relative; padding: 120px 0; }
+  section.alt { background: var(--cream); }
+
+  /* CHI SIAMO */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: center; }
+  .feature-list { list-style: none; margin-top: 30px; display: grid; gap: 20px; }
+  .feature-list li { display: flex; gap: 16px; align-items: flex-start; }
+  .feature-list .ico { flex: 0 0 auto; width: 44px; height: 44px; border-radius: 12px; background: var(--white); border: 1px solid var(--line); display: grid; place-items: center; color: var(--warm-dark); box-shadow: 0 8px 22px rgba(43,39,36,0.06); }
+  .feature-list h4 { font-family:'Poppins'; font-size: 1.02rem; font-weight: 700; margin-bottom: 2px; }
+  .feature-list p { font-size: 0.95rem; color: var(--ink-soft); }
+  .img-frame { position: relative; border-radius: var(--radius); overflow: hidden; box-shadow: 0 30px 70px rgba(43,39,36,0.18); }
+  .img-frame img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 4/5; }
+  .img-frame .badge { position: absolute; left: 22px; bottom: 22px; z-index: 2; background: rgba(255,255,255,0.92); backdrop-filter: blur(6px); padding: 14px 20px; border-radius: 14px; font-family:'Poppins'; font-weight: 700; font-size: 0.95rem; }
+  .img-frame .badge small { display:block; font-family:'Inter'; font-weight:500; color: var(--warm); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; }
+
+  /* PERCORSO - flow */
+  .flow { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 26px; margin-top: 56px; }
+  .flow-card { position: relative; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 34px 30px; transition: transform .35s var(--ease), box-shadow .35s var(--ease); }
+  .flow-card:hover { transform: translateY(-8px); box-shadow: 0 26px 50px rgba(43,39,36,0.12); }
+  .flow-card .ico-lg { width: 52px; height: 52px; border-radius: 14px; display: grid; place-items: center; background: var(--cream); color: var(--warm-dark); margin-bottom: 18px; }
+  .flow-card h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 10px; }
+  .flow-card p { font-size: 0.96rem; color: var(--ink-soft); }
+  .tech-bar { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 48px; }
+  .chip { font-family:'Poppins'; font-weight: 600; font-size: 0.82rem; padding: 9px 18px; border-radius: 999px; background: var(--ink); color: var(--white); }
+  .chip.outline { background: transparent; color: var(--ink); border: 1.5px solid var(--line); }
+
+  /* TEAM */
+  .team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; margin-top: 54px; }
+  .member { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 28px 22px; text-align: center; transition: transform .3s var(--ease), box-shadow .3s var(--ease); }
+  .member:hover { transform: translateY(-6px); box-shadow: 0 22px 44px rgba(43,39,36,0.10); }
+  .avatar { width: 78px; height: 78px; border-radius: 50%; margin: 0 auto 16px; display: grid; place-items: center; font-family:'Poppins'; font-weight: 800; font-size: 1.5rem; color: var(--white); background: linear-gradient(135deg, var(--warm) 0%, var(--warm-dark) 100%); }
+  .av1 { background: linear-gradient(135deg,#7b8fa1,#4a6274); }
+  .av2 { background: linear-gradient(135deg,#8a7a6b,#6c5d50); }
+  .av3 { background: linear-gradient(135deg,#7a8b6a,#4f6445); }
+  .av4 { background: linear-gradient(135deg,#a17a6b,#7a4f40); }
+  .av5 { background: linear-gradient(135deg,#7a6b8a,#504070); }
+  .av6 { background: linear-gradient(135deg,#8a8a6b,#5c5c40); }
+  .av7 { background: linear-gradient(135deg,#6b8a8a,#406060); }
+  .member h4 { font-family:'Poppins'; font-size: 1rem; font-weight: 700; }
+  .member span { font-size: 0.82rem; color: var(--warm); letter-spacing: 0.04em; }
+  .team-note { text-align: center; margin-top: 40px; color: var(--ink-soft); }
+
+  /* GALLERY */
+  .gallery { display: grid; grid-template-columns: repeat(6, 1fr); gap: 18px; margin-top: 56px; }
+  .gtile { position: relative; overflow: hidden; border-radius: var(--radius); cursor: pointer; box-shadow: 0 16px 40px rgba(43,39,36,0.10); }
+  .gtile.wide { grid-column: span 4; } .gtile.narrow { grid-column: span 2; }
+  .gtile img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 16/10; transition: transform .6s var(--ease); }
+  .gtile:hover img { transform: scale(1.06); }
+  .gtile .cap { position: absolute; inset: auto 0 0 0; z-index: 2; padding: 26px 22px 18px; color: #fff;
+    background: linear-gradient(to top, rgba(43,39,36,0.78) 0%, rgba(43,39,36,0) 100%);
+    font-family:'Poppins'; font-weight: 600; font-size: 0.95rem; opacity: 0; transform: translateY(8px); transition: opacity .35s var(--ease), transform .35s var(--ease); }
+  .gtile:hover .cap { opacity: 1; transform: none; }
+  .gtile::after { content:''; position: absolute; top: 14px; right: 14px; width: 34px; height: 34px; border-radius: 50%; z-index: 2;
+    background: rgba(255,255,255,0.22) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='white' stroke-width='2.4'%3E%3Cline x1='8' y1='3' x2='8' y2='13'/%3E%3Cline x1='3' y1='8' x2='13' y2='8'/%3E%3C/svg%3E") center/16px no-repeat;
+    backdrop-filter: blur(4px); opacity: 0; transition: opacity .3s var(--ease); }
+  .gtile:hover::after { opacity: 1; }
+
+  /* LIGHTBOX */
+  .lb { position: fixed; inset: 0; z-index: 999; display: none; align-items: center; justify-content: center; padding: 30px;
+    background: rgba(34,31,28,0.92); backdrop-filter: blur(6px); }
+  .lb.open { display: flex; }
+  .lb img { max-width: 92vw; max-height: 86vh; border-radius: 12px; box-shadow: 0 30px 80px rgba(0,0,0,0.5); }
+  .lb .close { position: absolute; top: 24px; right: 28px; width: 46px; height: 46px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.1); color: #fff; font-size: 1.6rem; cursor: pointer; display: grid; place-items: center; }
+  .lb .close:hover { background: rgba(255,255,255,0.2); }
+  @media (max-width: 900px) { .gtile.wide, .gtile.narrow { grid-column: span 6; } }
+
+  /* QUOTE */
+  .quote-wrap { max-width: 820px; margin: 0 auto; text-align: center; }
+  .quote-wrap .qmark { font-family:'Playfair Display'; font-style: italic; font-size: 5rem; line-height: .5; color: var(--warm-light); }
+  .quote-wrap blockquote { font-family:'Playfair Display'; font-style: italic; font-size: clamp(1.4rem, 3vw, 2.1rem); line-height: 1.4; color: var(--ink); margin: 10px 0 24px; }
+  .quote-wrap cite { font-family:'Poppins'; font-style: normal; font-weight: 600; font-size: 0.9rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--warm); }
+
+  /* TAKEAWAYS (dark) */
+  .results-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 56px; }
+  .result { text-align: center; padding: 38px 24px; border-radius: var(--radius); background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.12); }
+  .result strong { display: block; font-family:'Poppins'; font-weight: 900; font-size: 2.6rem; letter-spacing: -0.03em; line-height: 1; margin-bottom: 12px; }
+  .result span { font-size: 0.95rem; color: rgba(255,255,255,0.72); }
+  .results-block { background: var(--ink); color: var(--white); }
+  .results-block .section-title { color: var(--white); }
+  .results-block .eyebrow { color: var(--warm-light); }
+  .results-block .lead { color: rgba(255,255,255,0.78); }
+
+  /* CTA */
+  .cta { position: relative; overflow: hidden; background: linear-gradient(135deg, var(--warm-dark) 0%, var(--warm) 100%); color: var(--white); border-radius: 26px; padding: 70px 60px; text-align: center; margin: 0 auto; max-width: 980px; }
+  .cta h2 { font-size: clamp(1.8rem, 3.6vw, 2.6rem); font-weight: 800; margin-bottom: 16px; }
+  .cta p { font-size: 1.1rem; color: rgba(255,255,255,0.85); max-width: 52ch; margin: 0 auto 32px; }
+  .cta .btn-primary { background: var(--white); color: var(--ink); }
+
+  /* FOOTER */
+  footer { background: #221f1c; color: rgba(255,255,255,0.7); padding: 70px 0 34px; }
+  .foot-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: 50px; padding-bottom: 50px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+  footer .brand { color: var(--white); margin-bottom: 18px; }
+  footer .brand .mark { background: var(--white); color: var(--ink); }
+  footer p.about { max-width: 40ch; font-size: 0.95rem; }
+  footer h5 { font-family:'Poppins'; color: var(--white); font-size: 0.95rem; font-weight: 700; margin-bottom: 18px; letter-spacing: 0.02em; }
+  footer ul { list-style: none; display: grid; gap: 12px; }
+  footer ul a { font-size: 0.92rem; transition: color .2s; }
+  footer ul a:hover { color: var(--white); }
+  .socials { display: flex; gap: 12px; margin-top: 22px; }
+  .socials a { width: 40px; height: 40px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.18); display: grid; place-items: center; color: rgba(255,255,255,0.8); transition: all .25s var(--ease); }
+  .socials a:hover { background: var(--warm); border-color: var(--warm); color: var(--white); transform: translateY(-3px); }
+  .foot-bottom { display: flex; justify-content: space-between; padding-top: 26px; font-size: 0.85rem; flex-wrap: wrap; gap: 10px; }
+
+  /* ---------- CALCOLATORE ---------- */
+  .calc { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 56px; margin-top: 56px; align-items: start; }
+  .calc-panel { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 34px 32px; box-shadow: 0 18px 44px rgba(43,39,36,0.08); }
+  .calc-panel label { display: block; font-family:'Poppins'; font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; }
+  .calc-input-row { display: flex; gap: 12px; }
+  .calc-panel input { flex: 1; font-family:'Inter'; font-size: 1.05rem; padding: 14px 18px; border: 1.5px solid var(--line); border-radius: 12px; color: var(--ink); background: var(--cream); transition: border-color .2s; }
+  .calc-panel input:focus { outline: none; border-color: var(--warm); }
+  .calc-panel .btn-primary { background: var(--ink); color: var(--white); }
+  .calc-panel .btn-primary:hover { background: var(--warm-dark); }
+  .calc-summary { display: flex; gap: 16px; margin-top: 24px; }
+  .calc-summary .box { flex: 1; text-align: center; background: var(--cream); border: 1px solid var(--line); border-radius: 14px; padding: 18px 10px; }
+  .calc-summary .box strong { display: block; font-family:'Poppins'; font-weight: 800; font-size: 1.9rem; letter-spacing: -0.02em; color: var(--ink); }
+  .calc-summary .box span { font-size: 0.78rem; color: var(--warm); letter-spacing: 0.04em; }
+  .calc-hint { margin-top: 16px; font-size: 0.85rem; color: var(--ink-soft); }
+  .roles { display: grid; gap: 14px; }
+  .role-row { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 14px; }
+  .role-row .role-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px; }
+  .role-row .role-name { font-family:'Poppins'; font-weight: 600; font-size: 0.95rem; }
+  .role-row .role-pct { font-size: 0.8rem; color: var(--warm); }
+  .role-row .role-val { font-family:'Poppins'; font-weight: 800; font-size: 1.15rem; min-width: 100px; text-align: right; line-height: 1.2; }
+  .role-row .role-val small { display: block; font-family:'Inter'; font-weight: 600; font-size: 0.78rem; color: var(--warm); margin-top: 2px; }
+  .role-bar { grid-column: 1 / 2; height: 9px; border-radius: 999px; background: var(--cream); border: 1px solid var(--line); overflow: hidden; }
+  .role-bar > span { display: block; height: 100%; width: 0; border-radius: 999px; background: linear-gradient(90deg, var(--warm) 0%, var(--warm-dark) 100%); transition: width .7s var(--ease); }
+  .role-cell { grid-column: 1 / 3; }
+  @media (max-width: 900px) { .calc { grid-template-columns: 1fr; gap: 32px; } }
+
+/* ---------- reveal animation ---------- */
+  .reveal { opacity: 0; transform: translateY(34px); transition: opacity .8s var(--ease), transform .8s var(--ease); }
+  .reveal.in { opacity: 1; transform: none; }
+  .reveal.d1 { transition-delay: .08s; } .reveal.d2 { transition-delay: .16s; }
+  .reveal.d3 { transition-delay: .24s; } .reveal.d4 { transition-delay: .32s; }
+  @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } html { scroll-behavior: auto; } }
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 900px) {
+    .grid-2 { grid-template-columns: 1fr; gap: 40px; }
+    .flow { grid-template-columns: 1fr; }
+    .team-grid { grid-template-columns: repeat(2, 1fr); }
+    .results-grid { grid-template-columns: repeat(2, 1fr); }
+    .foot-grid { grid-template-columns: 1fr; gap: 36px; }
+    nav.links, .nav-cta { display: none; }
+    nav.links.open { display: flex; position: absolute; top: 76px; left: 0; right: 0; flex-direction: column; gap: 0; background: var(--white); border-bottom: 1px solid var(--line); padding: 8px 28px 18px; }
+    nav.links.open a { padding: 12px 0; border-bottom: 1px solid var(--line); color: var(--ink-soft); }
+    nav.links.open a:hover { color: var(--ink); }
+    .menu-toggle { display: grid; place-items:center; width: 44px; height: 44px; border: 1px solid var(--line); border-radius: 10px; background: var(--white); cursor: pointer; }
+    section.block { padding: 84px 0; }
+    .cta { padding: 50px 28px; }
+    /* accordion flow-card mobile */
+    .flow-card { cursor: pointer; }
+    .flow-body { max-height: 0; overflow: hidden; transition: max-height .4s var(--ease); }
+    .flow-card.open .flow-body { max-height: 300px; }
+    .flow-card .flow-toggle { position: absolute; right: 18px; top: 22px; color: var(--warm); font-size: 1.2rem; transition: transform .3s; }
+    .flow-card.open .flow-toggle { transform: rotate(180deg); }
+  }
+  @media (max-width: 520px) {
+    .team-grid, .results-grid { grid-template-columns: 1fr; }
+    .hero-stats { gap: 30px; }
+  }
+
+  /* ---------- GALLERY MOBILE CAROUSEL ---------- */
+  @media (max-width: 640px) {
+    .gallery {
+      display: flex; flex-direction: row;
+      overflow-x: auto; scroll-snap-type: x mandatory;
+      gap: 14px; padding-bottom: 12px;
+      scrollbar-width: none;
+    }
+    .gallery::-webkit-scrollbar { display: none; }
+    .gtile.wide, .gtile.narrow {
+      flex: 0 0 82vw; scroll-snap-align: start;
+    }
+    .gallery-dots { display: flex; justify-content: center; gap: 8px; margin-top: 14px; }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--warm-light); transition: background .2s; cursor: pointer; }
+    .dot.active { background: var(--warm-dark); }
+  }
+  @media (min-width: 641px) {
+    .gallery-dots { display: none; }
+  }
+
+  /* ---------- TECNOLOGIE ---------- */
+  .tech-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 22px; margin-top: 56px; }
+  .tech-card {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 30px 26px;
+    cursor: default;
+    transition: transform .35s var(--ease), box-shadow .35s var(--ease), border-color .35s var(--ease);
+    position: relative;
+    overflow: hidden;
+  }
+  .tech-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--warm) 0%, var(--warm-dark) 100%);
+    opacity: 0;
+    transition: opacity .35s var(--ease);
+    z-index: 0;
+  }
+  .tech-card:hover { transform: translateY(-8px); box-shadow: 0 26px 50px rgba(43,39,36,0.14); border-color: transparent; }
+  .tech-card:hover::before { opacity: 1; }
+  .tech-card:hover .tc-icon,
+  .tech-card:hover .tc-title,
+  .tech-card:hover .tc-desc,
+  .tech-card:hover .tc-tag { color: var(--white); }
+  .tech-card:hover .tc-icon { background: rgba(255,255,255,0.18); }
+  .tech-card:hover .tc-tag { background: rgba(255,255,255,0.22); color: var(--white); }
+  .tc-icon {
+    position: relative; z-index: 1;
+    width: 50px; height: 50px; border-radius: 14px;
+    background: var(--cream);
+    display: grid; place-items: center;
+    color: var(--warm-dark);
+    margin-bottom: 18px;
+    transition: background .35s var(--ease), color .35s var(--ease);
+  }
+  .tc-title { position: relative; z-index: 1; font-family:'Poppins'; font-weight: 700; font-size: 1.05rem; margin-bottom: 8px; transition: color .35s var(--ease); }
+  .tc-desc { position: relative; z-index: 1; font-size: 0.92rem; color: var(--ink-soft); line-height: 1.55; transition: color .35s var(--ease); }
+  .tc-tag {
+    position: relative; z-index: 1;
+    display: inline-block; margin-top: 16px;
+    font-family:'Poppins'; font-weight: 600; font-size: 0.75rem;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    background: var(--cream); color: var(--warm-dark);
+    padding: 5px 12px; border-radius: 999px;
+    transition: background .35s var(--ease), color .35s var(--ease);
+  }
+
+  /* ---------- SIMULATORE TEST ---------- */
+  .sim-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; margin-top: 56px; align-items: start; }
+  @media (max-width: 900px) { .sim-wrap { grid-template-columns: 1fr; gap: 32px; } }
+  .sim-editor {
+    background: #1e1c1a;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: 0 30px 60px rgba(43,39,36,0.22);
+    font-family: 'Courier New', monospace;
+  }
+  .sim-topbar {
+    display: flex; align-items: center; gap: 8px;
+    padding: 12px 18px;
+    background: #2d2a27;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+  .sim-dot { width: 12px; height: 12px; border-radius: 50%; }
+  .sim-dot.r { background: #ff5f57; }
+  .sim-dot.y { background: #febc2e; }
+  .sim-dot.g { background: #28c840; }
+  .sim-fname { margin-left: 10px; font-size: 0.78rem; color: rgba(255,255,255,0.45); font-family:'Inter'; }
+  .sim-code { padding: 24px 22px; font-size: 0.85rem; line-height: 1.7; color: #ccc; min-height: 260px; }
+  .sim-code .kw   { color: #c792ea; }
+  .sim-code .fn   { color: #82aaff; }
+  .sim-code .str  { color: #c3e88d; }
+  .sim-code .num  { color: #f78c6c; }
+  .sim-code .cmt  { color: #546e7a; font-style: italic; }
+  .sim-code .ok   { color: #28c840; font-weight: 700; }
+  .sim-code .fail { color: #ff5f57; font-weight: 700; }
+
+  .sim-panel { display: grid; gap: 16px; }
+  .sim-q {
+    background: var(--white);
+    border: 1.5px solid var(--line);
+    border-radius: var(--radius);
+    padding: 26px 24px;
+    transition: border-color .2s;
+  }
+  .sim-q.correct { border-color: #28c840; background: #f2fff3; }
+  .sim-q.wrong   { border-color: #ff5f57; background: #fff4f4; }
+  .sim-q-text { font-family:'Poppins'; font-weight: 700; font-size: 0.98rem; margin-bottom: 14px; }
+  .sim-opts { display: grid; gap: 8px; }
+  .sim-opt {
+    display: flex; align-items: center; gap: 10px;
+    background: var(--cream); border: 1.5px solid var(--line);
+    border-radius: 10px; padding: 11px 16px;
+    cursor: pointer;
+    font-size: 0.92rem; font-family:'Inter'; font-weight: 500;
+    transition: background .2s, border-color .2s, color .2s;
+    user-select: none;
+  }
+  .sim-opt:hover { background: var(--warm-light); border-color: var(--warm); }
+  .sim-opt.chosen-correct { background: #d4f8d4; border-color: #28c840; color: #1a5c1a; }
+  .sim-opt.chosen-wrong   { background: #ffd9d9; border-color: #ff5f57; color: #7a1a1a; }
+  .sim-opt.reveal-correct { background: #e8fbe8; border-color: #28c840; color: #1a5c1a; }
+  .sim-opt input[type=radio] { accent-color: var(--warm-dark); }
+  .sim-feedback { font-size: 0.88rem; margin-top: 10px; min-height: 1.4em; font-family:'Inter'; font-weight: 500; }
+  .sim-feedback.ok   { color: #1a5c1a; }
+  .sim-feedback.err  { color: #7a1a1a; }
+  .sim-score { font-family:'Poppins'; font-weight: 800; font-size: 1.05rem; text-align: center; padding: 16px; background: var(--cream); border-radius: 14px; border: 1px solid var(--line); }
+  .sim-btn-row { display: flex; gap: 12px; justify-content: flex-end; flex-wrap: wrap; }
+
+  /* ---------- COMPARATORE RUOLI ---------- */
+  .roles-tabs { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 48px; }
+  .role-tab {
+    font-family:'Poppins'; font-weight: 600; font-size: 0.88rem;
+    padding: 11px 22px; border-radius: 999px;
+    border: 1.5px solid var(--line);
+    background: var(--white); color: var(--ink-soft);
+    cursor: pointer; transition: all .25s var(--ease);
+  }
+  .role-tab.active,
+  .role-tab:hover { background: var(--ink); color: var(--white); border-color: var(--ink); }
+  .roles-compare { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 32px; }
+  @media (max-width: 900px) { .roles-compare { grid-template-columns: 1fr; } }
+  .role-pane {
+    background: var(--white);
+    border: 1.5px solid var(--line);
+    border-radius: var(--radius);
+    padding: 32px 26px;
+    display: none;
+    transition: opacity .4s var(--ease);
+    opacity: 0;
+  }
+  .role-pane.active { display: block; animation: fadeIn .4s var(--ease) forwards; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+  .role-pane-header { display: flex; align-items: center; gap: 14px; margin-bottom: 22px; }
+  .role-emoji { font-size: 2rem; line-height: 1; }
+  .role-pane-header h3 { font-family:'Poppins'; font-weight: 800; font-size: 1.15rem; }
+  .role-pane-header .role-sub { font-size: 0.8rem; color: var(--warm); letter-spacing: 0.04em; font-family:'Inter'; font-weight: 600; text-transform: uppercase; }
+  .role-section-title { font-family:'Poppins'; font-weight: 700; font-size: 0.82rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--warm); margin: 20px 0 10px; }
+  .role-pane ul { list-style: none; display: grid; gap: 8px; }
+  .role-pane ul li { font-size: 0.93rem; color: var(--ink-soft); display: flex; gap: 10px; align-items: flex-start; }
+  .role-pane ul li::before { content: '▸'; color: var(--warm); flex: 0 0 auto; margin-top: 1px; }
+  .role-tool-list { display: flex; flex-wrap: wrap; gap: 8px; }
+  .role-tool { font-family:'Poppins'; font-weight: 600; font-size: 0.76rem; background: var(--cream); border: 1px solid var(--line); border-radius: 8px; padding: 5px 12px; color: var(--ink-soft); }
+  .role-salary { margin-top: 20px; padding: 14px 18px; background: var(--cream); border-radius: 12px; font-family:'Poppins'; font-weight: 700; font-size: 0.92rem; }
+  .role-salary small { display:block; font-family:'Inter'; font-weight:500; color:var(--warm); font-size:0.76rem; margin-bottom:2px; }
+
+  /* QUIZ */
+  .quiz-box { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 38px 36px; box-shadow: 0 18px 44px rgba(43,39,36,0.08); }
+  .quiz-progress { height: 6px; background: var(--cream); border-radius: 999px; margin-bottom: 28px; overflow: hidden; }
+  .quiz-progress-bar { display: block; height: 100%; border-radius: 999px; background: linear-gradient(90deg, var(--warm) 0%, var(--warm-dark) 100%); width: 0; transition: width .5s var(--ease); }
+  .quiz-question-label { font-family:'Poppins'; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--warm); margin-bottom: 12px; }
+  .quiz-text { font-family:'Poppins'; font-size: 1.18rem; font-weight: 700; color: var(--ink); margin-bottom: 24px; line-height: 1.4; }
+  .quiz-options { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
+  .quiz-opt { padding: 14px 18px; border: 1.5px solid var(--line); border-radius: 12px; background: var(--cream); font-family:'Inter'; font-size: 0.95rem; cursor: pointer; transition: all .2s var(--ease); text-align: left; color: var(--ink); }
+  .quiz-opt:hover { border-color: var(--warm); background: var(--white); }
+  .quiz-opt.correct { background: #d4edda; border-color: #28a745; color: #155724; }
+  .quiz-opt.wrong { background: #f8d7da; border-color: #dc3545; color: #721c24; }
+  .quiz-opt:disabled { cursor: default; }
+  .quiz-feedback { font-size: 0.9rem; color: var(--ink-soft); min-height: 24px; margin-bottom: 16px; font-style: italic; }
+  .quiz-next { margin-top: 4px; }
+  .quiz-result { text-align: center; padding: 20px 0 0; }
+  .quiz-result .quiz-score { font-family:'Poppins'; font-weight: 900; font-size: 3rem; color: var(--ink); }
+  .quiz-result .quiz-badge { font-family:'Poppins'; font-weight: 700; font-size: 1.1rem; color: var(--warm-dark); margin: 8px 0 16px; }
+  .quiz-result p { color: var(--ink-soft); margin-bottom: 20px; }
+  @media (max-width: 600px) { .quiz-options { grid-template-columns: 1fr; } }
+
+  /* SORPRESE */
+  .surprises-list { display: flex; flex-direction: column; gap: 16px; }
+  .surprise-row { display: grid; grid-template-columns: 1fr 48px 1fr; align-items: center; gap: 16px; }
+  .s-before, .s-after { border-radius: 14px; padding: 22px 24px; }
+  .s-before { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); }
+  .s-after { background: rgba(138,122,107,0.22); border: 1px solid rgba(138,122,107,0.38); }
+  .s-label { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; display: block; margin-bottom: 8px; opacity: 0.6; }
+  .s-before .s-label { color: rgba(255,255,255,0.7); }
+  .s-after .s-label { color: var(--warm-light); }
+  .s-before p, .s-after p { font-size: 0.93rem; color: rgba(255,255,255,0.8); margin: 0; }
+  .s-after p { color: rgba(255,255,255,0.92); }
+  .s-arrow { text-align: center; color: var(--warm-light); font-size: 1.5rem; font-weight: bold; }
+  @media (max-width: 640px) {
+    .surprise-row { grid-template-columns: 1fr; }
+    .s-arrow { display: none; }
+  }
+
+  /* RUOLO GENERATOR */
+  .ruolo-box { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 38px 36px; box-shadow: 0 18px 44px rgba(43,39,36,0.08); text-align: left; }
+  .ruolo-q { font-family:'Poppins'; font-weight: 700; font-size: 1.15rem; color: var(--ink); margin-bottom: 22px; }
+  .ruolo-opts { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .ruolo-opt { padding: 16px 18px; border: 1.5px solid var(--line); border-radius: 12px; background: var(--cream); font-family:'Inter'; font-size: 0.95rem; cursor: pointer; transition: all .2s var(--ease); text-align: left; color: var(--ink); }
+  .ruolo-opt:hover { border-color: var(--warm); background: var(--white); transform: translateY(-2px); }
+  .ruolo-result { text-align: center; }
+  .ruolo-avatar { width: 80px; height: 80px; border-radius: 50%; margin: 0 auto 18px; display: grid; place-items: center; font-family:'Poppins'; font-weight: 900; font-size: 2rem; color: #fff; }
+  .ruolo-title { font-family:'Poppins'; font-weight: 900; font-size: 1.6rem; color: var(--ink); margin-bottom: 8px; }
+  .ruolo-desc { color: var(--ink-soft); font-size: 0.95rem; max-width: 52ch; margin: 0 auto 20px; }
+  .ruolo-skills { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 24px; }
+  .ruolo-skill { font-family:'Poppins'; font-weight: 600; font-size: 0.82rem; padding: 8px 16px; border-radius: 999px; background: var(--ink); color: var(--white); }
+  .ruolo-quote { font-style: italic; font-size: 0.9rem; color: var(--ink-soft); border-left: 3px solid var(--warm); padding-left: 16px; max-width: 50ch; margin: 0 auto 24px; text-align: left; }
+  @media (max-width: 600px) { .ruolo-opts { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a href="#top" class="brand">
+      <span class="mark">N</span>
+      <span>NTT&nbsp;DATA<small>Stage · Milano 2026</small></span>
+    </a>
+    <nav class="links" id="navlinks">
+      <a href="#percorso">Il percorso</a>
+      <a href="#quiz">Quiz</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#team">Il team</a>
+      <a href="#ruolo">Il tuo ruolo</a>
+    </nav>
+    <a href="#grazie" class="nav-cta">Grazie</a>
+    <button class="menu-toggle" aria-label="Apri menu" aria-expanded="false" id="menuToggle">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="top">
+  <div class="hero-bg">
+    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1920&q=80" alt="Gruppo di ragazzi al lavoro insieme" />
+  </div>
+  <span class="tri" style="top:14%;right:8%;border-left:60px solid transparent;border-right:60px solid transparent;border-bottom:104px solid rgba(255,255,255,0.06);transform:rotate(18deg);"></span>
+  <span class="tri" style="bottom:18%;right:22%;border-left:34px solid transparent;border-right:34px solid transparent;border-bottom:60px solid rgba(201,188,174,0.18);transform:rotate(-12deg);"></span>
+  <div class="wrap hero-inner">
+    <h1 class="reveal d1">La nostra esperienza<br/>in NTT Data</h1>
+    <div class="hero-actions reveal d2">
+      <a href="#chisiamo" class="btn btn-primary">Scopri di più
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CHI SIAMO ===== -->
+<section class="block" id="chisiamo">
+  <span class="tri" style="top:60px;left:-40px;border-left:50px solid transparent;border-right:50px solid transparent;border-bottom:88px solid rgba(138,122,107,0.10);transform:rotate(24deg);"></span>
+  <div class="wrap grid-2">
+    <div>
+      <span class="eyebrow reveal">Chi siamo</span>
+      <h2 class="section-title reveal d1">Sette ragazzi, <span class="serif">una sola avventura</span></h2>
+      <p class="lead reveal d2">Veniamo dalla stessa scuola e abbiamo affrontato insieme l'Alternanza Scuola-Lavoro presso NTT Data Milano. Due settimane in cui abbiamo scoperto come funziona davvero il mondo del lavoro: orari, riunioni, strumenti aziendali e, soprattutto, il valore di lavorare in gruppo.</p>
+      <ul class="feature-list">
+        <li class="reveal d2">
+          <span class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-3"/></svg></span>
+          <div><h4>Dove</h4><p>Negli uffici di NTT Data a Milano, accolti da tutor e professionisti del settore.</p></div>
+        </li>
+        <li class="reveal d3">
+          <span class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span>
+          <div><h4>Quando</h4><p>Due settimane di stage nel 2026, dentro la realtà quotidiana dell'azienda.</p></div>
+        </li>
+        <li class="reveal d4">
+          <span class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+          <div><h4>Insieme</h4><p>Abbiamo affrontato tutto come una squadra: dividendoci i compiti e aiutandoci a vicenda.</p></div>
+        </li>
+      </ul>
+    </div>
+    <div class="img-frame reveal d2">
+      <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1000&q=80" alt="Ragazzi che collaborano davanti a un computer" />
+      <span class="badge">Il nostro team<small>NTT Data · Stage 2026</small></span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== IL PERCORSO ===== -->
+<section class="block alt" id="percorso">
+  <div class="wrap">
+    <div style="max-width:640px;">
+      <span class="eyebrow reveal">Il percorso</span>
+      <h2 class="section-title reveal d1">Cosa abbiamo vissuto in queste due settimane</h2>
+      <p class="lead reveal d2">Tre cose hanno segnato la nostra esperienza più di tutto: la formazione ricevuta, il lavoro di gruppo e le competenze che ci portiamo a casa.</p>
+    </div>
+    <div class="flow">
+      <div class="flow-card reveal d1" data-day="1">
+        <span class="flow-toggle">▾</span>
+        <div class="ico-lg"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+        <h3>Lunedì 15 — Primo giorno</h3>
+        <div class="flow-body"><p>Mattina di attesa mentre arrivavano i computer. Nel pomeriggio ci siamo messi al lavoro con una prima analisi su un esercizio assegnato dai tutor.</p></div>
+      </div>
+      <div class="flow-card reveal d2" data-day="2">
+        <span class="flow-toggle">▾</span>
+        <div class="ico-lg"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+        <h3>Martedì 16 — Test e collaudo</h3>
+        <div class="flow-body"><p>Abbiamo svolto un test e assistito al collaudo di una funzione Testbook, osservando da vicino come viene verificato il codice in ambiente aziendale.</p></div>
+      </div>
+      <div class="flow-card reveal d3" data-day="3">
+        <span class="flow-toggle">▾</span>
+        <div class="ico-lg"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <h3>Mercoledì 17 — Incontri con i professionisti</h3>
+        <div class="flow-body"><p>Abbiamo parlato con diverse persone che lavorano in NTT Data, ognuna con un ruolo diverso. Storie di carriera, consigli e una visione concreta del mondo del lavoro.</p></div>
+      </div>
+      <div class="flow-card reveal d4" data-day="4">
+        <span class="flow-toggle">▾</span>
+        <div class="ico-lg"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
+        <h3>Giovedì 18 — Lezioni e nuovi ruoli</h3>
+        <div class="flow-body"><p>Ancora incontri con professionisti di ruoli diversi, alternati a lezioni condivise con loro. Un mix tra formazione e confronto diretto con chi lavora nel settore ogni giorno.</p></div>
+      </div>
+      <div class="flow-card reveal d5" data-day="5">
+        <span class="flow-toggle">▾</span>
+        <div class="ico-lg"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+        <h3>Venerdì 19 — Incontro con Chiara Imola</h3>
+        <div class="flow-body"><p>Abbiamo conosciuto <strong>Chiara Imola</strong>, Senior Software Developer in NTT DATA Italia (giu 2023 – presente, Roma). Ci ha parlato del suo lavoro con servizi Web RESTful, Maven e del percorso che l'ha portata a ricoprire questo ruolo.</p></div>
+      </div>
+    </div>
+    <div class="tech-bar reveal d2">
+      <span class="chip">Lavoro di squadra</span>
+      <span class="chip">Comunicazione</span>
+      <span class="chip outline">Organizzazione</span>
+      <span class="chip outline">Problem solving</span>
+      <span class="chip outline">Gestione del tempo</span>
+      <span class="chip outline">Mondo del lavoro</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CALCOLATORE ORE ===== -->
+<section class="block" id="calcolatore">
+  <span class="tri" style="top:60px;right:-30px;border-left:46px solid transparent;border-right:46px solid transparent;border-bottom:80px solid rgba(138,122,107,0.10);transform:rotate(-18deg);"></span>
+  <div class="wrap">
+    <div style="max-width:640px;">
+      <span class="eyebrow reveal">Il nostro progetto</span>
+      <h2 class="section-title reveal d1">Calcolatore di <span class="serif">pianificazione ore</span></h2>
+      <p class="lead reveal d2">Uno degli esercizi affrontati durante lo stage: dato il monte ore totale di un progetto, calcoliamo i giorni lavorativi (8 ore al giorno) e ripartiamo le ore tra i ruoli del team. Inserisci un valore e prova.</p>
+    </div>
+    <div class="calc">
+      <div class="calc-panel reveal d1">
+        <label for="totaleOre">Totale delle ore del progetto</label>
+        <div class="calc-input-row">
+          <input type="number" id="totaleOre" min="0" step="1" value="160" placeholder="Es. 160" />
+          <button class="btn btn-primary" id="calcBtn" type="button">Calcola</button>
+        </div>
+        <div class="calc-summary">
+          <div class="box"><strong id="giorni">20</strong><span>GIORNI LAVORATIVI</span></div>
+          <div class="box"><strong id="resto">0</strong><span>ORE RIMANENTI</span></div>
+        </div>
+        <p class="calc-hint">Giorni = totale ore &divide; 8 &nbsp;·&nbsp; Ore rimanenti = resto della divisione.</p>
+      </div>
+      <div class="roles reveal d2" id="roles"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== QUIZ ===== -->
+<section class="block alt" id="quiz">
+  <div class="wrap" style="max-width:720px;">
+    <span class="eyebrow reveal">Ispirato a Testbook</span>
+    <h2 class="section-title reveal d1">Metti alla prova le tue <span class="serif">conoscenze IT</span></h2>
+    <p class="lead reveal d2">8 domande sui temi che abbiamo incontrato in questa settimana. Quanto sai del mondo tech?</p>
+    <div class="quiz-box reveal d3" id="quizBox">
+      <div id="quizProgress" class="quiz-progress"><span id="quizProgressBar" class="quiz-progress-bar"></span></div>
+      <div id="quizQuestion" class="quiz-question-label"></div>
+      <div id="quizText" class="quiz-text"></div>
+      <div id="quizOptions" class="quiz-options"></div>
+      <div id="quizFeedback" class="quiz-feedback"></div>
+      <button id="quizNext" class="btn btn-primary quiz-next" style="display:none;">Prossima
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </button>
+      <div id="quizResult" class="quiz-result" style="display:none;"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TECNOLOGIE SCOPERTE ===== -->
+<section class="block alt" id="tecnologie">
+  <div class="wrap">
+    <div style="max-width:640px;">
+      <span class="eyebrow reveal">Quello che abbiamo imparato</span>
+      <h2 class="section-title reveal d1">Le tecnologie che abbiamo <span class="serif">scoperto</span></h2>
+      <p class="lead reveal d2">Chiara Imola ci ha introdotto al suo stack quotidiano. Ecco gli strumenti e i concetti che abbiamo toccato con mano in questi giorni.</p>
+    </div>
+    <div class="tech-cards">
+      <div class="tech-card reveal d1">
+        <div class="tc-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 6h16M4 12h8m-8 6h16"/><circle cx="18" cy="15" r="3"/><path d="M21 18l-1.5-1.5"/></svg>
+        </div>
+        <div class="tc-title">REST API</div>
+        <div class="tc-desc">I servizi web RESTful sono l'interfaccia tra i componenti software: il client invia una richiesta HTTP, il server risponde con dati JSON. Chiara li usa ogni giorno nel suo lavoro.</div>
+        <span class="tc-tag">HTTP · JSON · GET/POST</span>
+      </div>
+      <div class="tech-card reveal d2">
+        <div class="tc-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <div class="tc-title">Maven</div>
+        <div class="tc-desc">Il tool di build per Java che abbiamo visto usare da Chiara: gestisce le dipendenze del progetto, compila il codice ed esegue i test con un unico comando <code style="font-size:0.82em;background:rgba(0,0,0,0.06);padding:1px 5px;border-radius:4px;">mvn test</code>.</div>
+        <span class="tc-tag">Build · Dipendenze · Java</span>
+      </div>
+      <div class="tech-card reveal d3">
+        <div class="tc-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        </div>
+        <div class="tc-title">Testing del codice</div>
+        <div class="tc-desc">Martedì abbiamo assistito al collaudo di una funzione Testbook: si scrivono i casi di test prima ancora del codice (TDD). Il sistema verifica automaticamente che ogni funzione produca l'output atteso.</div>
+        <span class="tc-tag">TDD · Unit Test · Testbook</span>
+      </div>
+      <div class="tech-card reveal d1">
+        <div class="tc-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 12h8M12 8v8"/></svg>
+        </div>
+        <div class="tc-title">Java</div>
+        <div class="tc-desc">Il linguaggio del nostro esercizio. Abbiamo implementato la logica del calcolatore ore — divisioni intere, modulo, cicli — come fanno i developer in produzione, poi l'abbiamo portata in JavaScript per il web.</div>
+        <span class="tc-tag">OOP · Backend · JVM</span>
+      </div>
+      <div class="tech-card reveal d2">
+        <div class="tc-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 12A10 10 0 1 1 12 2"/><path d="M22 2L12 12"/><path d="M16 2h6v6"/></svg>
+        </div>
+        <div class="tc-title">Microservizi</div>
+        <div class="tc-desc">NTT Data costruisce applicazioni come insiemi di servizi indipendenti che comunicano via API. Ogni servizio ha un compito preciso: più facile da testare, scalare e aggiornare.</div>
+        <span class="tc-tag">Architettura · Scalabilità</span>
+      </div>
+      <div class="tech-card reveal d3">
+        <div class="tc-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M2 12h4M18 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+        </div>
+        <div class="tc-title">Metodologie Agile</div>
+        <div class="tc-desc">I professionisti di NTT Data lavorano in sprint brevi, con daily stand-up e retrospettive. Abbiamo capito come si organizza un team di sviluppo vero in modo da consegnare valore ogni settimana.</div>
+        <span class="tc-tag">Scrum · Sprint · Kanban</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SIMULATORE TEST / COLLAUDO ===== -->
+<section class="block" id="simulatore">
+  <div class="wrap">
+    <div style="max-width:640px;">
+      <span class="eyebrow reveal">Cosa abbiamo fatto martedì</span>
+      <h2 class="section-title reveal d1">Simulatore di <span class="serif">collaudo del codice</span></h2>
+      <p class="lead reveal d2">Martedì abbiamo testato funzioni Java e osservato come un tester verifica il comportamento del codice. Riprova tu stesso: rispondi alle domande come farebbe un QA engineer.</p>
+    </div>
+    <div class="sim-wrap">
+      <!-- Editor finto con snippet Java -->
+      <div class="sim-editor reveal d1">
+        <div class="sim-topbar">
+          <span class="sim-dot r"></span><span class="sim-dot y"></span><span class="sim-dot g"></span>
+          <span class="sim-fname">CalcolatoreOre.java</span>
+        </div>
+        <div class="sim-code" id="simCode">
+<span class="kw">public class</span> <span class="fn">CalcolatoreOre</span> {<br>
+&nbsp;&nbsp;<span class="cmt">// Ore lavorative per giorno</span><br>
+&nbsp;&nbsp;<span class="kw">static final int</span> ORE_GIORNO = <span class="num">8</span>;<br><br>
+&nbsp;&nbsp;<span class="kw">public static int</span> <span class="fn">giorniLavorativi</span>(<span class="kw">int</span> oreT) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span> oreT / ORE_GIORNO;<br>
+&nbsp;&nbsp;}<br><br>
+&nbsp;&nbsp;<span class="kw">public static int</span> <span class="fn">oreRimanenti</span>(<span class="kw">int</span> oreT) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span> oreT % ORE_GIORNO;<br>
+&nbsp;&nbsp;}<br><br>
+&nbsp;&nbsp;<span class="kw">public static double</span> <span class="fn">oreRuolo</span>(<span class="kw">int</span> oreT, <span class="kw">double</span> quota) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span> oreT * quota;<br>
+&nbsp;&nbsp;}<br>
+}<br><br>
+<span class="cmt">// === OUTPUT TEST ===</span><br>
+<span id="simTestOutput"></span>
+        </div>
+      </div>
+      <!-- Quiz interattivo -->
+      <div class="sim-panel reveal d2" id="simPanel"></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== GALLERY ===== -->
+<section class="block alt" id="gallery">
+  <span class="tri" style="top:50px;left:4%;border-left:40px solid transparent;border-right:40px solid transparent;border-bottom:70px solid rgba(138,122,107,0.10);transform:rotate(16deg);"></span>
+  <div class="wrap">
+    <div style="max-width:640px;">
+      <span class="eyebrow reveal">In azienda</span>
+      <h2 class="section-title reveal d1">Gli spazi che ci hanno <span class="serif">ospitato</span></h2>
+      <p class="lead reveal d2">Qualche scatto degli uffici NTT Data a Milano: open space luminosi, aree relax e angoli pensati per lavorare e confrontarsi. Clicca su una foto per ingrandirla.</p>
+    </div>
+    <div class="gallery">
+      <div class="gtile wide reveal d1"><img src="img/stage-1.jpeg" alt="Area lounge con divano, piante e tavolino" loading="lazy" decoding="async"><span class="cap">Area lounge &mdash; relax tra il verde</span></div>
+      <div class="gtile narrow reveal d2"><img src="img/stage-2.jpeg" alt="Angolo relax con poltrone e vista sulla citt&agrave;" loading="lazy" decoding="async"><span class="cap">Angolo relax con vista</span></div>
+      <div class="gtile narrow reveal d3"><img src="img/stage-3.jpeg" alt="Area anfiteatro con sedute in legno e cuscini" loading="lazy" decoding="async"><span class="cap">Area incontri &mdash; piano 6</span></div>
+      <div class="gtile wide reveal d4"><img src="img/stage-4.jpeg" alt="Open space con postazioni di lavoro e monitor" loading="lazy" decoding="async"><span class="cap">Open space &mdash; le postazioni di lavoro</span></div>
+    </div>
+    <div class="gallery-dots" id="galleryDots" aria-hidden="true">
+      <span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== QUOTE ===== -->
+<section class="block">
+  <div class="wrap">
+    <div class="quote-wrap reveal">
+      <div class="qmark">&ldquo;</div>
+      <blockquote>Siamo entrati come studenti e siamo usciti con un'idea molto più chiara di cosa significhi lavorare insieme in un'azienda vera.</blockquote>
+      <div class="qmark">&rdquo;</div>
+      <cite>— Ilaria Ettami</cite>
+      <p style="margin-top:28px;font-size:1rem;color:rgba(0,0,0,0.6);font-style:italic;">Invece, Ilaria Ettami e gli altri ci hanno dedicato tempo vero — domande, carriera, consigli.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== IL TEAM ===== -->
+<section class="block alt" id="team">
+  <span class="tri" style="top:80px;right:-30px;border-left:46px solid transparent;border-right:46px solid transparent;border-bottom:80px solid rgba(138,122,107,0.10);transform:rotate(-20deg);"></span>
+  <div class="wrap">
+    <div style="text-align:center;max-width:640px;margin:0 auto;">
+      <span class="eyebrow reveal">Il team</span>
+      <h2 class="section-title reveal d1">Siamo in <span class="serif">sette</span></h2>
+      <p class="lead reveal d2" style="margin:0 auto;">Ognuno con il proprio carattere e i propri punti di forza. Insieme abbiamo formato la squadra che ha vissuto questa esperienza.</p>
+    </div>
+    <div class="team-grid">
+      <div class="member reveal d1"><div class="avatar av1">G</div><h4>Gianluca</h4><span>Stagista</span></div>
+      <div class="member reveal d1"><div class="avatar av2">G</div><h4>Giacomo</h4><span>Stagista</span></div>
+      <div class="member reveal d2"><div class="avatar av3">K</div><h4>Kevin</h4><span>Stagista</span></div>
+      <div class="member reveal d2"><div class="avatar av4">L</div><h4>Luca</h4><span>Stagista</span></div>
+      <div class="member reveal d3"><div class="avatar av5">R</div><h4>Riccardo</h4><span>Stagista</span></div>
+      <div class="member reveal d3"><div class="avatar av6">D</div><h4>Davide</h4><span>Stagista</span></div>
+      <div class="member reveal d4"><div class="avatar av7">S</div><h4>Simone</h4><span>Stagista</span></div>
+      <div class="member reveal d4"><div class="avatar" style="background:var(--ink);">B</div><h4>Bruna</h4><span>Tutor aziendale</span></div>
+      <div class="member reveal d4"><div class="avatar" style="background:var(--ink);">I</div><h4>Ilaria</h4><span>Tutor aziendale</span></div>
+    </div>
+    <p class="team-note reveal d2">Gianluca, Giacomo, Kevin, Luca, Riccardo, Davide e Simone &mdash; il team dello stage.</p>
+  </div>
+</section>
+
+
+<!-- ===== SORPRESE ===== -->
+<section class="block" id="sorprese" style="background:var(--ink);color:var(--white);padding:100px 0;">
+  <div class="wrap">
+    <span class="eyebrow reveal" style="color:var(--warm-light);">Prima e dopo</span>
+    <h2 class="section-title reveal d1" style="color:#fff;">Cosa ci ha <span class="serif">sorpreso</span> di più</h2>
+    <p class="lead reveal d2" style="color:rgba(255,255,255,0.7);margin-bottom:48px;">Siamo entrati con aspettative precise. La realtà è stata diversa — quasi sempre meglio.</p>
+    <div class="surprises-list reveal d3">
+      <div class="surprise-row">
+        <div class="s-before"><span class="s-label">Pensavamo</span><p>«Un'azienda tech = tutti davanti al PC in silenzio.»</p></div>
+        <div class="s-arrow">→</div>
+        <div class="s-after"><span class="s-label">Invece</span><p>Open space vivace, riunioni, confronti continui. Il lavoro si fa insieme.</p></div>
+      </div>
+      <div class="surprise-row">
+        <div class="s-before"><span class="s-label">Pensavamo</span><p>«I professionisti sarebbero stati distaccati o indaffarati.»</p></div>
+        <div class="s-arrow">→</div>
+        <div class="s-after"><span class="s-label">Invece</span><p>Ilaria Ettami e gli altri ci hanno dedicato tempo vero — domande, carriera, consigli.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== RUOLO ===== -->
+<section class="block alt" id="ruolo">
+  <div class="wrap" style="max-width:760px;text-align:center;">
+    <span class="eyebrow reveal">Scopri il tuo profilo</span>
+    <h2 class="section-title reveal d1">Che figura saresti <span class="serif">in NTT Data?</span></h2>
+    <p class="lead reveal d2" style="margin:0 auto 40px;">Tre scelte veloci. Ti diciamo quale ruolo tech fa per te.</p>
+    <div class="ruolo-box reveal d3" id="ruoloBox">
+      <div id="ruoloSteps">
+        <div class="ruolo-step" id="ruoloStep0">
+          <p class="ruolo-q">Cosa preferisci fare?</p>
+          <div class="ruolo-opts">
+            <button class="ruolo-opt" data-step="0" data-val="frontend">Costruire cose <strong>visibili</strong></button>
+            <button class="ruolo-opt" data-step="0" data-val="backend">Risolvere <strong>problemi logici</strong></button>
+            <button class="ruolo-opt" data-step="0" data-val="pm">Organizzare il <strong>lavoro del team</strong></button>
+            <button class="ruolo-opt" data-step="0" data-val="qa">Trovare <strong>errori nascosti</strong></button>
+          </div>
+        </div>
+        <div class="ruolo-step" id="ruoloStep1" style="display:none;">
+          <p class="ruolo-q">Come lavori meglio?</p>
+          <div class="ruolo-opts">
+            <button class="ruolo-opt" data-step="1" data-val="frontend">Con <strong>design</strong> e creatività</button>
+            <button class="ruolo-opt" data-step="1" data-val="backend">In <strong>focus totale</strong>, da solo</button>
+            <button class="ruolo-opt" data-step="1" data-val="pm">In <strong>riunioni</strong> e confronti</button>
+            <button class="ruolo-opt" data-step="1" data-val="qa">Con <strong>metodo</strong> e checklist</button>
+          </div>
+        </div>
+        <div class="ruolo-step" id="ruoloStep2" style="display:none;">
+          <p class="ruolo-q">Qual è il tuo superpotere?</p>
+          <div class="ruolo-opts">
+            <button class="ruolo-opt" data-step="2" data-val="frontend">Creatività <strong>visiva</strong></button>
+            <button class="ruolo-opt" data-step="2" data-val="backend">Pensiero <strong>logico</strong></button>
+            <button class="ruolo-opt" data-step="2" data-val="pm">Empatia e <strong>comunicazione</strong></button>
+            <button class="ruolo-opt" data-step="2" data-val="qa">Attenzione ai <strong>dettagli</strong></button>
+          </div>
+        </div>
+      </div>
+      <div id="ruoloResult" style="display:none;" class="ruolo-result"></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="brand"><span class="mark">N</span><span>NTT&nbsp;DATA<small>Milano · Stage 2026</small></span></div>
+        <p class="about">La presentazione della nostra esperienza di Alternanza Scuola-Lavoro: sette ragazzi, due settimane, una squadra.</p>
+      </div>
+      <div>
+        <h5>Il racconto</h5>
+        <ul>
+          <li><a href="#chisiamo">Chi siamo</a></li>
+          <li><a href="#percorso">Il percorso</a></li>
+          <li><a href="#team">Il team</a></li>
+          <li><a href="#bilancio">Cosa ci portiamo a casa</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Lo stage</h5>
+        <ul>
+          <li><a href="#">NTT Data — Sede di Milano</a></li>
+          <li><a href="#">Alternanza Scuola-Lavoro 2026</a></li>
+          <li><a href="#">Due settimane di stage</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 — La nostra esperienza di stage in NTT Data Milano.</span>
+      <span>Realizzato dai 7 ragazzi dello stage.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== LIGHTBOX ===== -->
+<div class="lb" id="lb">
+  <button class="close" id="lbClose" aria-label="Chiudi">&times;</button>
+  <img id="lbImg" src="" alt="" />
+</div>
+
+<script>
+  const nav = document.getElementById('nav');
+  const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 40);
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  const menuToggle = document.getElementById('menuToggle');
+  menuToggle.addEventListener('click', () => {
+    const isOpen = document.getElementById('navlinks').classList.toggle('open');
+    menuToggle.setAttribute('aria-expanded', isOpen);
+  });
+
+  document.getElementById('navlinks').addEventListener('click', e => {
+    if (e.target.tagName === 'A') {
+      document.getElementById('navlinks').classList.remove('open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // lightbox gallery
+  const lb = document.getElementById('lb'), lbImg = document.getElementById('lbImg');
+  const openLb = src => { lbImg.src = src; lb.classList.add('open'); document.body.style.overflow = 'hidden'; };
+  const closeLb = () => { lb.classList.remove('open'); document.body.style.overflow = ''; };
+  document.querySelectorAll('.gtile img').forEach(img => img.addEventListener('click', () => openLb(img.src)));
+  document.getElementById('lbClose').addEventListener('click', closeLb);
+  lb.addEventListener('click', e => { if (e.target === lb) closeLb(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLb(); });
+
+  // ===== Calcolatore ore (porting del codice Java) =====
+  const oreGiornaliere = 8;
+  const ruoli = [
+    { nome: 'Tester',             quota: 0.20 },
+    { nome: 'UX/UI Designer',     quota: 0.15 },
+    { nome: 'Backend Developer',  quota: 0.25 },
+    { nome: 'Frontend Developer', quota: 0.25 },
+    { nome: 'Project Manager',    quota: 0.10 },
+    { nome: 'Data Analyst',       quota: 0.05 },
+  ];
+
+  // Formatta una durata (in minuti) come "X h Y min"
+  function fmtOreMin(totMin) {
+    totMin = Math.round(totMin);
+    const h = Math.floor(totMin / 60);
+    const m = totMin % 60;
+    if (h && m) return h + ' h ' + m + ' min';
+    if (h) return h + ' h';
+    return m + ' min';
+  }
+  // Formatta una durata (in minuti) come "X giorni Y h Z min" (1 giorno = 8 h)
+  function fmtGiorni(totMin) {
+    totMin = Math.round(totMin);
+    const minGiorno = oreGiornaliere * 60;
+    const g = Math.floor(totMin / minGiorno);
+    const resto = totMin % minGiorno;
+    if (g && resto) return g + ' g ' + fmtOreMin(resto);
+    if (g) return g + (g === 1 ? ' giorno' : ' giorni');
+    return fmtOreMin(resto);
+  }
+
+  const elTotale = document.getElementById('totaleOre');
+  const elGiorni = document.getElementById('giorni');
+  const elResto  = document.getElementById('resto');
+  const elRoles  = document.getElementById('roles');
+
+  // Costruisce una sola volta le righe dei ruoli
+  ruoli.forEach((r, i) => {
+    const row = document.createElement('div');
+    row.className = 'role-row';
+    row.innerHTML =
+      '<div class="role-cell">' +
+        '<div class="role-head">' +
+          '<span class="role-name">' + r.nome + '</span>' +
+          '<span class="role-pct">' + Math.round(r.quota * 100) + '%</span>' +
+        '</div>' +
+        '<div class="role-bar"><span data-bar="' + i + '"></span></div>' +
+      '</div>' +
+      '<div class="role-val"><span data-val="' + i + '">0</span><small data-days="' + i + '">0 giorni</small></div>';
+    elRoles.appendChild(row);
+  });
+
+  // Anima un valore da 0 a "finale", formattandolo a ogni frame con "render"
+  function anima(el, finale, render) {
+    const durata = 700;
+    let inizio = null;
+    function step(ts) {
+      if (inizio === null) inizio = ts;
+      const t = Math.min((ts - inizio) / durata, 1);
+      const eased = 1 - Math.pow(1 - t, 3); // easeOutCubic
+      el.textContent = render(t < 1 ? finale * eased : finale);
+      if (t < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  function calcola() {
+    const totaleOre = Math.max(0, Math.floor(Number(elTotale.value) || 0));
+    const giorniLavorativi = Math.floor(totaleOre / oreGiornaliere);
+    const oreRimanenti = totaleOre % oreGiornaliere;
+
+    anima(elGiorni, giorniLavorativi, v => Math.round(v).toString());
+    anima(elResto, oreRimanenti, v => Math.round(v).toString());
+
+    const max = Math.max(...ruoli.map(r => r.quota));
+    ruoli.forEach((r, i) => {
+      const oreMin = totaleOre * r.quota * 60; // ore del ruolo, in minuti
+      const bar = elRoles.querySelector('[data-bar="' + i + '"]');
+      const val = elRoles.querySelector('[data-val="' + i + '"]');
+      const days = elRoles.querySelector('[data-days="' + i + '"]');
+
+      // azzera la barra, poi anima fino alla larghezza desiderata
+      bar.style.width = '0%';
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        bar.style.width = (r.quota / max * 100) + '%';
+      }));
+
+      anima(val, oreMin, fmtOreMin);
+      anima(days, oreMin, fmtGiorni);
+    });
+  }
+
+  document.getElementById('calcBtn').addEventListener('click', calcola);
+  elTotale.addEventListener('keydown', e => { if (e.key === 'Enter') calcola(); });
+
+
+
+  // accordion percorso mobile
+  document.querySelectorAll('.flow-card').forEach(card => {
+    card.addEventListener('click', () => {
+      if (window.innerWidth <= 900) card.classList.toggle('open');
+    });
+  });
+
+  // gallery dots mobile
+  const galleryEl = document.querySelector('.gallery');
+  const dots = document.querySelectorAll('.dot');
+  if (galleryEl && dots.length) {
+    galleryEl.addEventListener('scroll', () => {
+      const idx = Math.round(galleryEl.scrollLeft / (galleryEl.offsetWidth * 0.82));
+      dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+    }, { passive: true });
+    dots.forEach((d, i) => d.addEventListener('click', () => {
+      galleryEl.scrollTo({ left: i * galleryEl.offsetWidth * 0.82, behavior: 'smooth' });
+    }));
+  }
+
+  // ===== Quiz IT =====
+  const quizData = [
+    { q: 'Cosa significa "testing" nel software?', opts: ['Scrivere documentazione','Verificare che il codice funzioni correttamente','Pubblicare l\'app sullo store','Progettare l\'interfaccia'], c: 1, exp: 'Il testing verifica che il software funzioni come previsto, trovando bug prima del rilascio.' },
+    { q: 'Cos\'è Maven nel mondo Java?', opts: ['Un database SQL','Un framework frontend','Uno strumento di build e gestione dipendenze','Un\'interfaccia grafica'], c: 2, exp: 'Maven automatizza la compilazione e gestisce le librerie (dipendenze) dei progetti Java.' },
+    { q: 'Cosa fa un "Project Manager" in un team tech?', opts: ['Scrive il codice backend','Progetta le icone','Coordina il team, tempi e obiettivi','Testa manualmente l\'app'], c: 2, exp: 'Il PM organizza il lavoro del team, gestisce scadenze e comunica con i clienti.' },
+    { q: 'Cosa sono le REST API?', opts: ['Interfacce per comunicare tra sistemi via HTTP','Strumenti per testare il database','Linguaggi di programmazione','Framework CSS'], c: 0, exp: 'Le REST API sono contratti che permettono a due sistemi di scambiarsi dati tramite HTTP.' },
+    { q: 'In un team agile, quanto dura uno "sprint"?', opts: ['1 giorno','1-4 settimane','6 mesi','1 anno'], c: 1, exp: 'Uno sprint agile dura tipicamente 1-4 settimane, al termine delle quali si rilascia qualcosa di funzionante.' },
+    { q: 'Cosa si intende per "collaudo" di una funzione?', opts: ['Scrivere la funzione da zero','Verificare che la funzione produca i risultati attesi','Pubblicare la funzione in produzione','Documentare la funzione'], c: 1, exp: 'Il collaudo (o test) verifica che una funzione specifica si comporti come previsto in diversi scenari.' },
+    { q: 'FSL sta per…', opts: ['Formazione Sistemi Linux','Formazione e Studio del Lavoro','Framework Software Layer','Formazione Scuola-Lavoro'], c: 3, exp: 'FSL = Formazione Scuola-Lavoro: un programma che porta gli studenti in aziende reali.' },
+  ];
+  const badges = [
+    [0,3,'Iniziatore 🌱','Hai ancora tanto da scoprire — e noi eravamo nella stessa situazione una settimana fa!'],
+    [4,6,'Junior Dev 💻','Buone basi! Con un po\' di pratica arrivi lontano.'],
+    [7,8,'Future NTT Talent 🚀','Impressionante! Hai capito cosa abbiamo vissuto meglio di molti adulti.'],
+  ];
+  let qIdx = 0, score = 0;
+  function renderQuiz() {
+    const q = quizData[qIdx];
+    document.getElementById('quizQuestion').textContent = 'Domanda ' + (qIdx+1) + ' di ' + quizData.length;
+    document.getElementById('quizProgressBar').style.width = ((qIdx / quizData.length) * 100) + '%';
+    document.getElementById('quizText').textContent = q.q;
+    document.getElementById('quizFeedback').textContent = '';
+    document.getElementById('quizNext').style.display = 'none';
+    document.getElementById('quizResult').style.display = 'none';
+    const opts = document.getElementById('quizOptions');
+    opts.innerHTML = '';
+    q.opts.forEach((o, i) => {
+      const btn = document.createElement('button');
+      btn.className = 'quiz-opt'; btn.textContent = o;
+      btn.addEventListener('click', () => {
+        opts.querySelectorAll('.quiz-opt').forEach(b => { b.disabled = true; });
+        btn.classList.add(i === q.c ? 'correct' : 'wrong');
+        if (i !== q.c) opts.querySelectorAll('.quiz-opt')[q.c].classList.add('correct');
+        if (i === q.c) score++;
+        document.getElementById('quizFeedback').textContent = q.exp;
+        document.getElementById('quizNext').style.display = 'inline-flex';
+      });
+      opts.appendChild(btn);
+    });
+  }
+  function nextQuestion() {
+    qIdx++;
+    if (qIdx < quizData.length) { renderQuiz(); return; }
+    document.getElementById('quizProgressBar').style.width = '100%';
+    document.getElementById('quizOptions').innerHTML = '';
+    document.getElementById('quizText').textContent = '';
+    document.getElementById('quizQuestion').textContent = '';
+    document.getElementById('quizFeedback').textContent = '';
+    document.getElementById('quizNext').style.display = 'none';
+    const badge = badges.find(b => score >= b[0] && score <= b[1]);
+    const res = document.getElementById('quizResult');
+    res.style.display = 'block';
+    res.innerHTML = '<div class="quiz-score">' + score + '/' + quizData.length + '</div><div class="quiz-badge">' + badge[2] + '</div><p>' + badge[3] + '</p><button class="btn btn-primary" onclick="qIdx=0;score=0;renderQuiz();">Riprova</button>';
+  }
+  document.getElementById('quizNext').addEventListener('click', nextQuestion);
+  renderQuiz();
+
+  // ===== Simulatore Collaudo =====
+  // ===== Simulatore Collaudo =====
+  const simQuestions = [
+    {
+      output: 'giorniLavorativi(20) → <span class="ok">?</span>',
+      question: '1. Il progetto ha 20 ore totali. Quanti giorni interi restituisce giorniLavorativi(20)?',
+      opts: ['2', '2.5', '3', '4'],
+      c: 0,
+      exp: '20 ÷ 8 = 2 con resto 4. In Java la divisione tra interi tronca i decimali: restituisce 2, non 2.5.'
+    },
+    {
+      output: 'oreRimanenti(20) → <span class="ok">?</span>',
+      question: '2. Stesso progetto da 20 ore: quante ore rimangono dopo i giorni interi?',
+      opts: ['0', '2', '4', '6'],
+      c: 2,
+      exp: '20 % 8 = 4. Dopo 2 giorni interi (16h) avanzano ancora 4 ore da lavorare.'
+    },
+    {
+      output: 'oreRuolo(120, 0.20) → <span class="ok">?</span>',
+      question: '3. Un progetto da 120 ore: quante spettano al Tester (quota 20%)?',
+      opts: ['20.0', '24.0', '30.0', '12.0'],
+      c: 1,
+      exp: '120 × 0.20 = 24.0 ore. Il 20% di 120 è 24: quasi 3 giornate lavorative.'
+    },
+    {
+      output: 'oreRimanenti(25) → <span class="fail">?</span>',
+      question: '4. Il test si aspetta 0 da oreRimanenti(25). Passa o fallisce?',
+      opts: ['✅ PASSA', '❌ FALLISCE'],
+      c: 1,
+      exp: '25 % 8 = 1, non 0. Il test FALLISCE: 25 non è multiplo di 8, avanza 1 ora.'
+    },
+    {
+      output: 'giorniLavorativi(40) → <span class="ok">?</span>',
+      question: '5. oreRuolo assegna 40 ore al Frontend Dev. giorniLavorativi(40) quanto vale?',
+      opts: ['4', '5', '6', '8'],
+      c: 1,
+      exp: '40 ÷ 8 = 5 giorni esatti. 40 ore = una settimana lavorativa completa.'
+    },
+  ];
+  let sIdx = 0, sScore = 0, simLocked = false;
+  const simPanel = document.getElementById('simPanel');
+  const simOutputEl = document.getElementById('simTestOutput');
+
+  function renderSimQ() {
+    simLocked = false;
+    const q = simQuestions[sIdx];
+    if (simOutputEl) simOutputEl.innerHTML = q.output;
+    simPanel.innerHTML =
+      '<div class="quiz-progress" style="margin-bottom:20px;"><span class="quiz-progress-bar" id="simPBar" style="width:' + (sIdx / simQuestions.length * 100) + '%;display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--warm),var(--warm-dark));transition:width .5s var(--ease);"></span></div>' +
+      '<div class="quiz-question-label">Domanda ' + (sIdx+1) + ' di ' + simQuestions.length + '</div>' +
+      '<div class="quiz-text" style="margin-bottom:20px;">' + q.question + '</div>' +
+      '<div class="sim-q-opts" id="simQOpts" style="display:grid;grid-template-columns:' + (q.opts.length === 2 ? '1fr 1fr' : '1fr 1fr') + ';gap:12px;margin-bottom:16px;"></div>' +
+      '<div id="simQFb" class="quiz-feedback"></div>';
+
+    const optsEl = document.getElementById('simQOpts');
+    q.opts.forEach((o, i) => {
+      const btn = document.createElement('button');
+      btn.className = 'quiz-opt';
+      btn.textContent = o;
+      btn.addEventListener('click', () => {
+        if (simLocked) return;
+        simLocked = true;
+        optsEl.querySelectorAll('.quiz-opt').forEach(b => b.disabled = true);
+        btn.classList.add(i === q.c ? 'correct' : 'wrong');
+        if (i !== q.c) optsEl.querySelectorAll('.quiz-opt')[q.c].classList.add('correct');
+        if (i === q.c) sScore++;
+        document.getElementById('simQFb').textContent = q.exp;
+        setTimeout(() => {
+          sIdx++;
+          if (sIdx < simQuestions.length) { renderSimQ(); return; }
+          showSimResult();
+        }, 1600);
+      });
+      optsEl.appendChild(btn);
+    });
+  }
+
+  function showSimResult() {
+    if (simOutputEl) simOutputEl.innerHTML = '<span class="ok">✓ Collaudo completato</span>';
+    const badges = [[0,2,'Osservatore 👀','Riprova: ci vuole occhio!'],[3,4,'Collaudatore 🔍','Buona sensibilità per i bug!'],[5,5,'QA Engineer ⚙️','Perfetto. Hai l\'occhio del tester.']];
+    const badge = badges.find(b => sScore >= b[0] && sScore <= b[1]);
+    simPanel.innerHTML =
+      '<div class="quiz-result" style="display:block;padding-top:0;">' +
+      '<div class="quiz-score">' + sScore + '/' + simQuestions.length + '</div>' +
+      '<div class="quiz-badge">' + badge[2] + '</div>' +
+      '<p>' + badge[3] + '</p>' +
+      '<button class="btn btn-primary" id="simRetry">Riprova</button></div>';
+    document.getElementById('simRetry').addEventListener('click', () => { sIdx=0; sScore=0; renderSimQ(); });
+  }
+
+  renderSimQ();
+
+  // ===== Generatore Ruolo =====
+  const ruoliProfiles = {
+    frontend: {
+      label: 'Frontend Developer',
+      emoji: '🎨',
+      bg: 'linear-gradient(135deg,#7b8fa1,#4a6274)',
+      desc: 'Trasformi idee in interfacce. Hai occhio per i dettagli visivi e ami vedere il risultato del tuo lavoro direttamente sullo schermo.',
+      skills: ['HTML/CSS','JavaScript','UI Design','React/Vue'],
+      quote: '"Il codice frontend è l\'arte che incontra la logica." — Chiara Imola, Senior SW Developer NTT Data'
+    },
+    backend: {
+      label: 'Backend Developer',
+      emoji: '⚙️',
+      bg: 'linear-gradient(135deg,#7a6b8a,#504070)',
+      desc: 'Sei il motore invisibile. Costruisci le API, gestisci i dati e risolvi problemi complessi che nessun utente vedrà mai — ma senza cui nulla funzionerebbe.',
+      skills: ['Java','REST API','Maven','Database'],
+      quote: '"Il backend è la fondamenta: invisibile, ma tutto dipende da lui." — Team NTT Data'
+    },
+    pm: {
+      label: 'Project Manager',
+      emoji: '🗂️',
+      bg: 'linear-gradient(135deg,#8a8a6b,#5c5c40)',
+      desc: 'Tieni tutto insieme. Coordini le persone, gestisci le priorità e trasformi il caos in un piano chiaro. Sei il collante del team.',
+      skills: ['Agile/Scrum','Comunicazione','Pianificazione','Risk Management'],
+      quote: '"Un buon PM rende il lavoro degli altri possibile." — Tutor NTT Data'
+    },
+    qa: {
+      label: 'QA / Tester',
+      emoji: '🔍',
+      bg: 'linear-gradient(135deg,#7a8b6a,#4f6445)',
+      desc: 'Sei l\'ultima linea di difesa. Trovi i bug prima che li trovino gli utenti. Il tuo lavoro protegge la qualità di tutto il prodotto.',
+      skills: ['Testing','Testbook','Analisi critica','Automazione'],
+      quote: '"Il tester non è chi trova i bug: è chi protegge gli utenti." — Team NTT Data'
+    }
+  };
+  const ruoloVotes = { frontend: 0, backend: 0, pm: 0, qa: 0 };
+  document.querySelectorAll('.ruolo-opt').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const step = parseInt(btn.dataset.step);
+      ruoloVotes[btn.dataset.val]++;
+      const nextStep = document.getElementById('ruoloStep' + (step + 1));
+      document.getElementById('ruoloStep' + step).style.display = 'none';
+      if (nextStep) { nextStep.style.display = 'block'; return; }
+      const winner = Object.entries(ruoloVotes).sort((a,b) => b[1]-a[1])[0][0];
+      const p = ruoliProfiles[winner];
+      document.getElementById('ruoloSteps').style.display = 'none';
+      const res = document.getElementById('ruoloResult');
+      res.style.display = 'block';
+      res.innerHTML =
+        '<div class="ruolo-avatar" style="background:' + p.bg + ';">' + p.emoji + '</div>' +
+        '<div class="ruolo-title">' + p.label + '</div>' +
+        '<p class="ruolo-desc">' + p.desc + '</p>' +
+        '<div class="ruolo-skills">' + p.skills.map(s => '<span class="ruolo-skill">' + s + '</span>').join('') + '</div>' +
+        '<p class="ruolo-quote">' + p.quote + '</p>' +
+        '<button class="btn btn-primary" onclick="Object.keys(ruoloVotes).forEach(k=>ruoloVotes[k]=0);document.getElementById(\'ruoloSteps\').style.display=\'block\';document.getElementById(\'ruoloResult\').style.display=\'none\';document.querySelectorAll(\'.ruolo-step\').forEach((s,i)=>s.style.display=i===0?\'block\':\'none\');">Riprova</button>';
+    });
+  });
+</script>
+</body>
+</html>
