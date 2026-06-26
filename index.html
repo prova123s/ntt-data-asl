@@ -446,6 +446,35 @@
   .role-salary { margin-top: 20px; padding: 14px 18px; background: var(--cream); border-radius: 12px; font-family:'Poppins'; font-weight: 700; font-size: 0.92rem; }
   .role-salary small { display:block; font-family:'Inter'; font-weight:500; color:var(--warm); font-size:0.76rem; margin-bottom:2px; }
 
+  /* ---------- INDICE ---------- */
+  .indice-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+    margin-top: 48px;
+  }
+  .indice-item {
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 24px 22px;
+    transition: transform .3s var(--ease), box-shadow .3s var(--ease);
+  }
+  .indice-item:hover { transform: translateY(-4px); box-shadow: 0 18px 40px rgba(43,39,36,0.10); }
+  .indice-num {
+    flex: 0 0 auto;
+    width: 40px; height: 40px;
+    border-radius: 10px;
+    background: var(--ink); color: var(--white);
+    display: grid; place-items: center;
+    font-family: 'Poppins'; font-weight: 800; font-size: 1rem;
+  }
+  .indice-info h4 { font-family: 'Poppins'; font-size: 1rem; font-weight: 700; margin-bottom: 4px; }
+  .indice-info span { font-size: 0.85rem; color: var(--warm); font-weight: 500; }
+
   /* QUIZ */
   .quiz-box { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 38px 36px; box-shadow: 0 18px 44px rgba(43,39,36,0.08); }
   .quiz-progress { height: 6px; background: var(--cream); border-radius: 999px; margin-bottom: 28px; overflow: hidden; }
@@ -509,11 +538,11 @@
       <span>NTT&nbsp;DATA<small>Stage · Milano 2026</small></span>
     </a>
     <nav class="links" id="navlinks">
+      <a href="#indice">Indice</a>
       <a href="#percorso">Il percorso</a>
       <a href="#quiz">Quiz</a>
       <a href="#gallery">Gallery</a>
       <a href="#team">Il team</a>
-      <a href="#ruolo">Il tuo ruolo</a>
     </nav>
     <button class="menu-toggle" aria-label="Apri menu" aria-expanded="false" id="menuToggle">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
@@ -564,6 +593,51 @@
     <div class="img-frame reveal d2">
       <img src="img/gruppo.png" alt="Il gruppo sul tetto di NTT Data Milano" />
       <span class="badge">Il nostro team<small>NTT Data · Stage 2026</small></span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== INDICE ===== -->
+<section class="block alt" id="indice">
+  <div class="wrap">
+    <div style="max-width:640px;">
+      <span class="eyebrow reveal">Indice</span>
+      <h2 class="section-title reveal d1">Le nostre <span class="serif">esperienze</span></h2>
+      <p class="lead reveal d2">Otto sessioni con professionisti NTT Data: ogni area dell'azienda ci ha aperto le porte.</p>
+    </div>
+    <div class="indice-grid">
+      <div class="indice-item reveal d1">
+        <div class="indice-num">1</div>
+        <div class="indice-info"><h4>Analisi di un progetto</h4><span>Ilaria Ettami</span></div>
+      </div>
+      <div class="indice-item reveal d2">
+        <div class="indice-num">2</div>
+        <div class="indice-info"><h4>Testing e collaudo</h4><span>Bruna Bonaiuto</span></div>
+      </div>
+      <div class="indice-item reveal d3">
+        <div class="indice-num">3</div>
+        <div class="indice-info"><h4>Cyber sicurezza</h4><span>Ilaria Ciarletti / Andrea Altarui</span></div>
+      </div>
+      <div class="indice-item reveal d4">
+        <div class="indice-num">4</div>
+        <div class="indice-info"><h4>Back-end</h4><span>Chiara Imola / Antonio Esposito</span></div>
+      </div>
+      <div class="indice-item reveal d1">
+        <div class="indice-num">5</div>
+        <div class="indice-info"><h4>Front-end</h4><span>Michele Montagner</span></div>
+      </div>
+      <div class="indice-item reveal d2">
+        <div class="indice-num">6</div>
+        <div class="indice-info"><h4>Design</h4><span>Marco Romano</span></div>
+      </div>
+      <div class="indice-item reveal d3">
+        <div class="indice-num">7</div>
+        <div class="indice-info"><h4>Sostenibilità</h4><span>Arianna Marino</span></div>
+      </div>
+      <div class="indice-item reveal d4">
+        <div class="indice-num">8</div>
+        <div class="indice-info"><h4>Database / Analisi</h4><span>Leo Domenico Iofrida / Giovanni Quarta</span></div>
+      </div>
     </div>
   </div>
 </section>
@@ -684,12 +758,22 @@
 <!-- ===== DIAGRAMMA DI FLUSSO ===== -->
 <section class="block" id="diagramma">
   <div class="wrap">
-    <div style="max-width:640px;">
-      <span class="eyebrow reveal">24 giugno</span>
-      <h2 class="section-title reveal d1">Diagramma di Flusso — <span class="serif">Logica di Accesso</span></h2>
-      <p class="lead reveal d2">Il flusso che abbiamo progettato per controllare chi può visualizzare l'attestato di sicurezza: verifica login, accettazione privacy, tipo di profilo e completamento del corso.</p>
+    <div style="max-width:720px;">
+      <span class="eyebrow reveal">Il progetto</span>
+      <h2 class="section-title reveal d1">Diagramma di flusso <span class="serif">di un progetto</span></h2>
+      <p class="lead reveal d2">I diagrammi di flusso sono strumenti grafici che abbiamo utilizzato per rappresentare in modo chiaro e sequenziale il funzionamento di un processo o di un algoritmo.</p>
+      <div class="reveal d3" style="display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:32px;">
+        <div style="background:var(--cream);border:1px solid var(--line);border-radius:14px;padding:22px 20px;">
+          <div style="font-family:'Poppins';font-weight:700;font-size:0.95rem;margin-bottom:8px;">Decisioni e percorsi</div>
+          <p style="font-size:0.93rem;color:var(--ink-soft);margin:0;">Ci hanno permesso di visualizzare decisioni, controlli e percorsi possibili all'interno del sistema.</p>
+        </div>
+        <div style="background:var(--cream);border:1px solid var(--line);border-radius:14px;padding:22px 20px;">
+          <div style="font-family:'Poppins';font-weight:700;font-size:0.95rem;margin-bottom:8px;">Il caso analizzato</div>
+          <p style="font-size:0.93rem;color:var(--ink-soft);margin:0;">Il diagramma descrive il processo di accesso all'attestato di sicurezza, mostrando le verifiche eseguite sull'utente prima di autorizzare o rifiutare l'accesso.</p>
+        </div>
+      </div>
     </div>
-    <div class="reveal d2" style="margin-top:48px;border-radius:var(--radius);overflow:hidden;box-shadow:0 30px 70px rgba(43,39,36,0.14);border:1px solid var(--line);">
+    <div class="reveal d3" style="margin-top:48px;border-radius:var(--radius);overflow:hidden;box-shadow:0 30px 70px rgba(43,39,36,0.14);border:1px solid var(--line);">
       <img src="img/diagramma-accesso.png" alt="Diagramma di flusso — Logica di Accesso agli attestati di sicurezza" style="width:100%;display:block;" />
     </div>
   </div>
@@ -950,46 +1034,6 @@
   </div>
 </section>
 
-<!-- ===== RUOLO ===== -->
-<section class="block alt" id="ruolo">
-  <div class="wrap" style="max-width:760px;text-align:center;">
-    <span class="eyebrow reveal">Scopri il tuo profilo</span>
-    <h2 class="section-title reveal d1">Che figura saresti <span class="serif">in NTT Data?</span></h2>
-    <p class="lead reveal d2" style="margin:0 auto 40px;">Tre scelte veloci. Ti diciamo quale ruolo tech fa per te.</p>
-    <div class="ruolo-box reveal d3" id="ruoloBox">
-      <div id="ruoloSteps">
-        <div class="ruolo-step" id="ruoloStep0">
-          <p class="ruolo-q">Cosa preferisci fare?</p>
-          <div class="ruolo-opts">
-            <button class="ruolo-opt" data-step="0" data-val="frontend">Costruire cose <strong>visibili</strong></button>
-            <button class="ruolo-opt" data-step="0" data-val="backend">Risolvere <strong>problemi logici</strong></button>
-            <button class="ruolo-opt" data-step="0" data-val="pm">Organizzare il <strong>lavoro del team</strong></button>
-            <button class="ruolo-opt" data-step="0" data-val="qa">Trovare <strong>errori nascosti</strong></button>
-          </div>
-        </div>
-        <div class="ruolo-step" id="ruoloStep1" style="display:none;">
-          <p class="ruolo-q">Come lavori meglio?</p>
-          <div class="ruolo-opts">
-            <button class="ruolo-opt" data-step="1" data-val="frontend">Con <strong>design</strong> e creatività</button>
-            <button class="ruolo-opt" data-step="1" data-val="backend">In <strong>focus totale</strong>, da solo</button>
-            <button class="ruolo-opt" data-step="1" data-val="pm">In <strong>riunioni</strong> e confronti</button>
-            <button class="ruolo-opt" data-step="1" data-val="qa">Con <strong>metodo</strong> e checklist</button>
-          </div>
-        </div>
-        <div class="ruolo-step" id="ruoloStep2" style="display:none;">
-          <p class="ruolo-q">Qual è il tuo superpotere?</p>
-          <div class="ruolo-opts">
-            <button class="ruolo-opt" data-step="2" data-val="frontend">Creatività <strong>visiva</strong></button>
-            <button class="ruolo-opt" data-step="2" data-val="backend">Pensiero <strong>logico</strong></button>
-            <button class="ruolo-opt" data-step="2" data-val="pm">Empatia e <strong>comunicazione</strong></button>
-            <button class="ruolo-opt" data-step="2" data-val="qa">Attenzione ai <strong>dettagli</strong></button>
-          </div>
-        </div>
-      </div>
-      <div id="ruoloResult" style="display:none;" class="ruolo-result"></div>
-    </div>
-  </div>
-</section>
 
 
 <!-- ===== FOOTER ===== -->
